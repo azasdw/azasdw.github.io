@@ -1,1 +1,217 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on My Hugo Blog</title><link>https://azasdw.github.io/posts/</link><description>Recent content in Posts on My Hugo Blog</description><generator>Hugo -- 0.146.0</generator><language>en-us</language><lastBuildDate>Fri, 23 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://azasdw.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Hello World</title><link>https://azasdw.github.io/posts/hello-world/</link><pubDate>Fri, 23 May 2025 00:00:00 +0000</pubDate><guid>https://azasdw.github.io/posts/hello-world/</guid><description>&lt;p>Welcome to your new Hugo blog powered by Hugo and PaperMod!&lt;/p></description></item><item><title>Use hugo and Github Action to make a website</title><link>https://azasdw.github.io/posts/hugo_blog/</link><pubDate>Wed, 21 May 2025 00:00:00 +0000</pubDate><guid>https://azasdw.github.io/posts/hugo_blog/</guid><description>&lt;p>Welcome to your new Hugo blog powered by Hugo and PaperMod!&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on Ethan'blog</title><link>https://azasdw.github.io/posts/</link><description>Recent content in Posts on Ethan'blog</description><generator>Hugo -- 0.146.0</generator><language>zh-CN</language><copyright>eternity</copyright><lastBuildDate>Fri, 23 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://azasdw.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Hello World</title><link>https://azasdw.github.io/posts/hello-world/</link><pubDate>Fri, 23 May 2025 00:00:00 +0000</pubDate><guid>https://azasdw.github.io/posts/hello-world/</guid><description>&lt;p>Welcome to your new Hugo blog powered by Hugo and PaperMod!&lt;/p></description></item><item><title>Spring中Validation注解使用</title><link>https://azasdw.github.io/posts/validation/</link><pubDate>Sat, 30 Nov 2024 12:46:50 +0800</pubDate><guid>https://azasdw.github.io/posts/validation/</guid><description>&lt;p>在日常开发中，参数校验是一个常见需求，而 Java 的 &lt;strong>Bean Validation&lt;/strong> 提供了一种优雅的方式，通过注解对对象的字段进行校验。Spring 对此功能进行了深度整合，使得在 Controller、Service 等层面实现校验变得非常简单。&lt;/p>
+&lt;p>本文将从以下几个方面介绍如何在 Spring 中使用 Validation 注解：&lt;/p>
+&lt;ol>
+&lt;li>引入依赖&lt;/li>
+&lt;li>简单示例&lt;/li>
+&lt;li>常见校验注解分类与说明&lt;/li>
+&lt;li>分组校验&lt;/li>
+&lt;li>自定义校验&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h2 id="1-引入依赖">1. 引入依赖&lt;/h2>
+&lt;p>在使用 Spring 校验功能之前，需要引入相关依赖。&lt;br>
+通常使用 Hibernate Validator 作为 JSR 380 的实现。&lt;/p>
+&lt;h3 id="maven">Maven&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xml" data-lang="xml">&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold">&amp;lt;groupId&amp;gt;&lt;/span>org.springframework.boot&lt;span style="font-weight:bold">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold">&amp;lt;artifactId&amp;gt;&lt;/span>spring-boot-starter-validation&lt;span style="font-weight:bold">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="gradle">Gradle&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-groovy" data-lang="groovy">&lt;span style="display:flex;">&lt;span>implementation &lt;span style="color:#0ff;font-weight:bold">&amp;#39;org.springframework.boot:spring-boot-starter-validation&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h2 id="2-简单示例">2. 简单示例&lt;/h2>
+&lt;p>以下是一个基本的参数校验示例。我们通过 &lt;code>@NotNull&lt;/code>, &lt;code>@Size&lt;/code> 等注解对参数进行校验，并在校验失败时返回错误信息。&lt;/p>
+&lt;h3 id="数据模型">数据模型&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">16
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">17
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">18
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">19
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">20
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">21
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">22
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">23
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">24
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">25
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">26
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">27
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">28
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">29
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff;font-weight:bold">import&lt;/span> javax.validation.constraints.NotNull;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff;font-weight:bold">import&lt;/span> javax.validation.constraints.Size;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff;font-weight:bold">public&lt;/span> &lt;span style="color:#fff;font-weight:bold">class&lt;/span> User {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> @NotNull(message = &lt;span style="color:#0ff;font-weight:bold">&amp;#34;用户名不能为空&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> @Size(min = 3, max = 15, message = &lt;span style="color:#0ff;font-weight:bold">&amp;#34;用户名长度必须在3到15个字符之间&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#fff;font-weight:bold">private&lt;/span> String username;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> @NotNull(message = &lt;span style="color:#0ff;font-weight:bold">&amp;#34;密码不能为空&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> @Size(min = 6, message = &lt;span style="color:#0ff;font-weight:bold">&amp;#34;密码长度至少为6个字符&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#fff;font-weight:bold">private&lt;/span> String password;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#007f7f">// Getter &amp;amp; Setter&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#fff;font-weight:bold">public&lt;/span> String getUsername() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#fff;font-weight:bold">return&lt;/span> username;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#fff;font-weight:bold">public&lt;/span> &lt;span style="color:#fff;font-weight:bold">void&lt;/span> setUsername(String username) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#fff;font-weight:bold">this&lt;/span>.&lt;span style="color:#007f7f">username&lt;/span> = username;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#fff;font-weight:bold">public&lt;/span> String getPassword() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#fff;font-weight:bold">return&lt;/span> password;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#fff;font-weight:bold">public&lt;/span> &lt;span style="color:#fff;font-weight:bold">void&lt;/span> setPassword(String password) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#fff;font-weight:bold">this&lt;/span>.&lt;span style="color:#007f7f">password&lt;/span> = password;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="controller">Controller&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff;font-weight:bold">import&lt;/span> org.springframework.validation.annotation.Validated;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff;font-weight:bold">import&lt;/span> org.springframework.web.bind.annotation.*;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff;font-weight:bold">import&lt;/span> javax.validation.Valid;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>@RestController
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>@RequestMapping(&lt;span style="color:#0ff;font-weight:bold">&amp;#34;/users&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>@Validated
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff;font-weight:bold">public&lt;/span> &lt;span style="color:#fff;font-weight:bold">class&lt;/span> UserController {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> @PostMapping(&lt;span style="color:#0ff;font-weight:bold">&amp;#34;/register&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#fff;font-weight:bold">public&lt;/span> String register(@RequestBody @Valid User user) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#fff;font-weight:bold">return&lt;/span> &lt;span style="color:#0ff;font-weight:bold">&amp;#34;用户注册成功：&amp;#34;&lt;/span> + user.&lt;span style="color:#007f7f">getUsername&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="测试">测试&lt;/h3>
+&lt;p>请求示例：&lt;/p></description></item><item><title>frp实现内网穿透</title><link>https://azasdw.github.io/posts/frp/</link><pubDate>Sun, 03 Nov 2024 12:00:00 +0800</pubDate><guid>https://azasdw.github.io/posts/frp/</guid><description>&lt;h2 id="frp内网穿透">frp内网穿透&lt;/h2>
+&lt;p>要实现内网穿透，可以使用一些常见的内网穿透软件，如：&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>frp (Fast Reverse Proxy)&lt;/strong> ：高性能的反向代理应用，可以实现内网服务的穿透。&lt;/li>
+&lt;li>&lt;strong>ngrok&lt;/strong>：易于使用的反向代理工具。&lt;/li>
+&lt;li>&lt;strong>ZeroTier&lt;/strong>：一个虚拟网络，可以轻松地将设备连接到同一个网络中。&lt;/li>
+&lt;/ol>
+&lt;p>这里以 frp 为例，来讲解如何设置内网穿透：&lt;/p>
+&lt;p>A为局域网内的主机，B为拥有公网IP的服务器主机&lt;/p>
+&lt;h3 id="安装-frp">安装 frp&lt;/h3>
+&lt;ol>
+&lt;li>&lt;strong>下载 frp&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;p>在服务器 B 和主机 A 上都下载 frp：&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007f7f"># 在服务器 B 上&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wget https://github.com/fatedier/frp/releases/download/v0.40.0/frp_0.40.0_linux_amd64.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar -xzf frp_0.40.0_linux_amd64.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff;font-weight:bold">cd&lt;/span> frp_0.40.0_linux_amd64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007f7f"># 在主机 A 上&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wget https://github.com/fatedier/frp/releases/download/v0.40.0/frp_0.40.0_linux_amd64.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar -xzf frp_0.40.0_linux_amd64.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff;font-weight:bold">cd&lt;/span> frp_0.40.0_linux_amd64
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ol start="2">
+&lt;li>&lt;strong>配置服务器 B（frps.ini）&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;p>在服务器 B 上创建 &lt;code>frps.ini&lt;/code> 配置文件：&lt;/p></description></item><item><title>使用hugo创建个人网站</title><link>https://azasdw.github.io/posts/hugo%E6%90%AD%E5%BB%BA/</link><pubDate>Thu, 30 Nov 2023 12:46:50 +0800</pubDate><guid>https://azasdw.github.io/posts/hugo%E6%90%AD%E5%BB%BA/</guid><description>&lt;blockquote>
+&lt;p>该站点使用hugo进行的搭建，并且实现了自动化部署，在搭建过程当中也踩了不少的坑，这里记录一些。&lt;/p>&lt;/blockquote>
+&lt;h3 id="站点搭建简介">站点搭建简介&lt;/h3>
+&lt;h3 id="框架选取">框架选取&lt;/h3>
+&lt;p>市面上有很多不用写代码就可以建站的工具，比如worldpress,hexo等等。&lt;/p>
+&lt;p>大致可以分为两类，一类是静态网站生成器，比如hexo, hugo等, 是将写作对应的markdown文件渲染成静态网页，因为是静态文件，速度会比较快，并且搭建简单，尤其适合个人网站的搭建。&lt;/p>
+&lt;p>另一类是动态网站，比如worldpress、Halo等，这些需要涉及到数据库的交互，更适合企业，比如一些电商之类的，搭建会略微比前者复杂一丢丢（都是个人网站其实也没复杂多少啦，多了数据库交互而已）。因为存在数据库，后期维护以及拓展其他功能会比静态网站强大很多，对应更多的学习成本。&lt;/p>
+&lt;p>为什么选择hugo?&lt;/p>
+&lt;p>感觉它star比较多（算理由吗？）。。。&lt;/p>
+&lt;p>之前用过worldpress,Halo又要php又要MySQL，本就弱鸡的服务器勉强能够带起来，访问的速度非常的慢，体验糟糕。&lt;/p>
+&lt;p>因此还是选用了静态网站生成器，hugo和hexo中选择了前者，hugo的star多一点。&lt;/p>
+&lt;p>国内存在一些非官方的文档，这里仍然推荐官方文档，大陆可能会访问的慢一点。&lt;/p>
+&lt;blockquote>
+&lt;p>官方文档：&lt;a href="https://gohugo.io/getting-started/quick-start/">Quick start | Hugo&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;h3 id="安装主题">安装主题&lt;/h3>
+&lt;p>主题使用的是PaperMod，同时在演示demo也有hugo安装步骤。&lt;/p>
+&lt;p>&lt;a href="https://github.com/adityatelange/hugo-PaperMod/wiki/Features">Features · adityatelange/hugo-PaperMod Wiki&lt;/a>&lt;/p>
+&lt;h3 id="部署">部署&lt;/h3>
+&lt;p>部署一是静态网站托管，二是部署在云服务器上。&lt;/p>
+&lt;p>该站点部署在云服务器上，代码托管在gitea，同时使用gitea仓库的webhook实现自动化部署。&lt;/p>
+&lt;p>一般都是在windows下进行写作，写好把静态网站传到服务器就好了，我这里是把对应的写作的md以及配置文件上传保存到仓库，这样可以实现在其他电脑上也可以写作。这就要求服务器要有对应的hugo来生成静态网页。&lt;/p>
+&lt;h2 id="踩到的坑">踩到的坑&lt;/h2>
+&lt;h3 id="版本保证一致">版本保证一致&lt;/h3>
+&lt;p>在本地hugo能够正常生成静态文件，到了服务器上使用hugo命令就不行了。原因如下&lt;/p>
+&lt;ol>
+&lt;li>hugo版本对不上&lt;/li>
+&lt;li>hugo在windows下和Linux的配置文件不同&lt;/li>
+&lt;/ol>
+&lt;p>hugo在云服务上的版本要和本地的版本保持一致，使用&lt;code>hugo version&lt;/code>命令可以查看&lt;/p>
+&lt;p>hugo是windows下的配置文件是hugo开头的，但是在Linux上的config开头的，顺便也可以把它当中开发和生成对应的配置文件。:dog2:&lt;/p>
+&lt;h2 id="要补的坑">要补的坑&lt;/h2>
+&lt;p>自动化部署使用git hooks，原理是git仓库在内容在更新后会向某个地址或IP（服务器地址）推送一个POST请求，服务器上使用python脚本一直监听该请求，在收到请求后执行git pull的操作，触发本地git hooks，在执行hugo部署的命令。&lt;/p>
+&lt;p>这个过程第一次配置还是蛮麻烦的，我省略了python脚本对密钥的判断，以及执行git pull的权限判断（仓库设为了共有的。。）后面再慢慢搞。&lt;/p></description></item></channel></rss>
