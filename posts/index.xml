@@ -214,4 +214,71 @@
 &lt;p>hugo是windows下的配置文件是hugo开头的，但是在Linux上的config开头的，顺便也可以把它当中开发和生成对应的配置文件。:dog2:&lt;/p>
 &lt;h2 id="要补的坑">要补的坑&lt;/h2>
 &lt;p>自动化部署使用git hooks，原理是git仓库在内容在更新后会向某个地址或IP（服务器地址）推送一个POST请求，服务器上使用python脚本一直监听该请求，在收到请求后执行git pull的操作，触发本地git hooks，在执行hugo部署的命令。&lt;/p>
-&lt;p>这个过程第一次配置还是蛮麻烦的，我省略了python脚本对密钥的判断，以及执行git pull的权限判断（仓库设为了共有的。。）后面再慢慢搞。&lt;/p></description></item></channel></rss>
+&lt;p>这个过程第一次配置还是蛮麻烦的，我省略了python脚本对密钥的判断，以及执行git pull的权限判断（仓库设为了共有的。。）后面再慢慢搞。&lt;/p></description></item><item><title/><link>https://azasdw.github.io/posts/vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://azasdw.github.io/posts/vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid><description>&lt;h2 id="vscode-常用快捷键">vscode 常用快捷键&lt;/h2>
+&lt;div class="goat svg-container ">
+&lt;svg
+xmlns="http://www.w3.org/2000/svg"
+font-family="Menlo,Lucida Console,monospace"
+viewBox="0 0 176 57"
+>
+&lt;g transform='translate(8,16)'>
+&lt;text text-anchor='middle' x='0' y='4' fill='currentColor' style='font-size:1em'>C&lt;/text>
+&lt;text text-anchor='middle' x='0' y='36' fill='currentColor' style='font-size:1em'>C&lt;/text>
+&lt;text text-anchor='middle' x='8' y='4' fill='currentColor' style='font-size:1em'>t&lt;/text>
+&lt;text text-anchor='middle' x='8' y='36' fill='currentColor' style='font-size:1em'>t&lt;/text>
+&lt;text text-anchor='middle' x='16' y='4' fill='currentColor' style='font-size:1em'>r&lt;/text>
+&lt;text text-anchor='middle' x='16' y='36' fill='currentColor' style='font-size:1em'>r&lt;/text>
+&lt;text text-anchor='middle' x='24' y='4' fill='currentColor' style='font-size:1em'>l&lt;/text>
+&lt;text text-anchor='middle' x='24' y='36' fill='currentColor' style='font-size:1em'>l&lt;/text>
+&lt;text text-anchor='middle' x='32' y='36' fill='currentColor' style='font-size:1em'>+&lt;/text>
+&lt;text text-anchor='middle' x='40' y='4' fill='currentColor' style='font-size:1em'>+&lt;/text>
+&lt;text text-anchor='middle' x='40' y='36' fill='currentColor' style='font-size:1em'>S&lt;/text>
+&lt;text text-anchor='middle' x='48' y='36' fill='currentColor' style='font-size:1em'>h&lt;/text>
+&lt;text text-anchor='middle' x='56' y='4' fill='currentColor' style='font-size:1em'>`&lt;/text>
+&lt;text text-anchor='middle' x='56' y='36' fill='currentColor' style='font-size:1em'>i&lt;/text>
+&lt;text text-anchor='middle' x='64' y='36' fill='currentColor' style='font-size:1em'>f&lt;/text>
+&lt;text text-anchor='middle' x='72' y='36' fill='currentColor' style='font-size:1em'>t&lt;/text>
+&lt;text text-anchor='middle' x='80' y='4' fill='currentColor' style='font-size:1em'>#&lt;/text>
+&lt;text text-anchor='middle' x='80' y='36' fill='currentColor' style='font-size:1em'>+&lt;/text>
+&lt;text text-anchor='middle' x='88' y='36' fill='currentColor' style='font-size:1em'>P&lt;/text>
+&lt;text text-anchor='middle' x='96' y='4' fill='currentColor' style='font-size:1em'>调&lt;/text>
+&lt;text text-anchor='middle' x='104' y='4' fill='currentColor' style='font-size:1em'>出&lt;/text>
+&lt;text text-anchor='middle' x='104' y='36' fill='currentColor' style='font-size:1em'>#&lt;/text>
+&lt;text text-anchor='middle' x='112' y='4' fill='currentColor' style='font-size:1em'>终&lt;/text>
+&lt;text text-anchor='middle' x='120' y='4' fill='currentColor' style='font-size:1em'>端&lt;/text>
+&lt;text text-anchor='middle' x='120' y='36' fill='currentColor' style='font-size:1em'>调&lt;/text>
+&lt;text text-anchor='middle' x='128' y='4' fill='currentColor' style='font-size:1em'>窗&lt;/text>
+&lt;text text-anchor='middle' x='128' y='36' fill='currentColor' style='font-size:1em'>出&lt;/text>
+&lt;text text-anchor='middle' x='136' y='4' fill='currentColor' style='font-size:1em'>口&lt;/text>
+&lt;text text-anchor='middle' x='136' y='36' fill='currentColor' style='font-size:1em'>命&lt;/text>
+&lt;text text-anchor='middle' x='144' y='36' fill='currentColor' style='font-size:1em'>令&lt;/text>
+&lt;text text-anchor='middle' x='152' y='36' fill='currentColor' style='font-size:1em'>窗&lt;/text>
+&lt;text text-anchor='middle' x='160' y='36' fill='currentColor' style='font-size:1em'>口&lt;/text>
+&lt;/g>
+&lt;/svg>
+&lt;/div>
+&lt;h3 id="命令">命令&lt;/h3>
+&lt;div class="goat svg-container ">
+&lt;svg
+xmlns="http://www.w3.org/2000/svg"
+font-family="Menlo,Lucida Console,monospace"
+viewBox="0 0 136 25"
+>
+&lt;g transform='translate(8,16)'>
+&lt;text text-anchor='middle' x='0' y='4' fill='currentColor' style='font-size:1em'>G&lt;/text>
+&lt;text text-anchor='middle' x='8' y='4' fill='currentColor' style='font-size:1em'>i&lt;/text>
+&lt;text text-anchor='middle' x='16' y='4' fill='currentColor' style='font-size:1em'>t&lt;/text>
+&lt;text text-anchor='middle' x='24' y='4' fill='currentColor' style='font-size:1em'>:&lt;/text>
+&lt;text text-anchor='middle' x='32' y='4' fill='currentColor' style='font-size:1em'>c&lt;/text>
+&lt;text text-anchor='middle' x='40' y='4' fill='currentColor' style='font-size:1em'>l&lt;/text>
+&lt;text text-anchor='middle' x='48' y='4' fill='currentColor' style='font-size:1em'>o&lt;/text>
+&lt;text text-anchor='middle' x='56' y='4' fill='currentColor' style='font-size:1em'>n&lt;/text>
+&lt;text text-anchor='middle' x='64' y='4' fill='currentColor' style='font-size:1em'>e&lt;/text>
+&lt;text text-anchor='middle' x='80' y='4' fill='currentColor' style='font-size:1em'>#&lt;/text>
+&lt;text text-anchor='middle' x='96' y='4' fill='currentColor' style='font-size:1em'>克&lt;/text>
+&lt;text text-anchor='middle' x='104' y='4' fill='currentColor' style='font-size:1em'>隆&lt;/text>
+&lt;text text-anchor='middle' x='112' y='4' fill='currentColor' style='font-size:1em'>项&lt;/text>
+&lt;text text-anchor='middle' x='120' y='4' fill='currentColor' style='font-size:1em'>目&lt;/text>
+&lt;/g>
+&lt;/svg>
+&lt;/div></description></item></channel></rss>

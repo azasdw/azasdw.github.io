@@ -218,4 +218,71 @@
 &lt;p>👋 嘿，你好！我是一名Java开发工程师 💻，热爱编程，对技术充满好奇 🧐，同时也爱分享自己经验心得 📚。&lt;/p>
 &lt;p>工作外，经常关注数码圈，喜欢自己DIY攒机，折腾一些没用的技术，生命不息，折腾不止~🚀🚀&lt;/p>
 &lt;p>总之，生活对我来说就像是写一段无尽的代码，总是充满了探索和惊喜！✨&lt;/p>
-&lt;p>如果你也对技术充满热情，或者有任何问题，随时来找我聊哦！&lt;/p></description></item></channel></rss>
+&lt;p>如果你也对技术充满热情，或者有任何问题，随时来找我聊哦！&lt;/p></description></item><item><title/><link>https://azasdw.github.io/posts/vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://azasdw.github.io/posts/vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid><description>&lt;h2 id="vscode-常用快捷键">vscode 常用快捷键&lt;/h2>
+&lt;div class="goat svg-container ">
+&lt;svg
+xmlns="http://www.w3.org/2000/svg"
+font-family="Menlo,Lucida Console,monospace"
+viewBox="0 0 176 57"
+>
+&lt;g transform='translate(8,16)'>
+&lt;text text-anchor='middle' x='0' y='4' fill='currentColor' style='font-size:1em'>C&lt;/text>
+&lt;text text-anchor='middle' x='0' y='36' fill='currentColor' style='font-size:1em'>C&lt;/text>
+&lt;text text-anchor='middle' x='8' y='4' fill='currentColor' style='font-size:1em'>t&lt;/text>
+&lt;text text-anchor='middle' x='8' y='36' fill='currentColor' style='font-size:1em'>t&lt;/text>
+&lt;text text-anchor='middle' x='16' y='4' fill='currentColor' style='font-size:1em'>r&lt;/text>
+&lt;text text-anchor='middle' x='16' y='36' fill='currentColor' style='font-size:1em'>r&lt;/text>
+&lt;text text-anchor='middle' x='24' y='4' fill='currentColor' style='font-size:1em'>l&lt;/text>
+&lt;text text-anchor='middle' x='24' y='36' fill='currentColor' style='font-size:1em'>l&lt;/text>
+&lt;text text-anchor='middle' x='32' y='36' fill='currentColor' style='font-size:1em'>+&lt;/text>
+&lt;text text-anchor='middle' x='40' y='4' fill='currentColor' style='font-size:1em'>+&lt;/text>
+&lt;text text-anchor='middle' x='40' y='36' fill='currentColor' style='font-size:1em'>S&lt;/text>
+&lt;text text-anchor='middle' x='48' y='36' fill='currentColor' style='font-size:1em'>h&lt;/text>
+&lt;text text-anchor='middle' x='56' y='4' fill='currentColor' style='font-size:1em'>`&lt;/text>
+&lt;text text-anchor='middle' x='56' y='36' fill='currentColor' style='font-size:1em'>i&lt;/text>
+&lt;text text-anchor='middle' x='64' y='36' fill='currentColor' style='font-size:1em'>f&lt;/text>
+&lt;text text-anchor='middle' x='72' y='36' fill='currentColor' style='font-size:1em'>t&lt;/text>
+&lt;text text-anchor='middle' x='80' y='4' fill='currentColor' style='font-size:1em'>#&lt;/text>
+&lt;text text-anchor='middle' x='80' y='36' fill='currentColor' style='font-size:1em'>+&lt;/text>
+&lt;text text-anchor='middle' x='88' y='36' fill='currentColor' style='font-size:1em'>P&lt;/text>
+&lt;text text-anchor='middle' x='96' y='4' fill='currentColor' style='font-size:1em'>调&lt;/text>
+&lt;text text-anchor='middle' x='104' y='4' fill='currentColor' style='font-size:1em'>出&lt;/text>
+&lt;text text-anchor='middle' x='104' y='36' fill='currentColor' style='font-size:1em'>#&lt;/text>
+&lt;text text-anchor='middle' x='112' y='4' fill='currentColor' style='font-size:1em'>终&lt;/text>
+&lt;text text-anchor='middle' x='120' y='4' fill='currentColor' style='font-size:1em'>端&lt;/text>
+&lt;text text-anchor='middle' x='120' y='36' fill='currentColor' style='font-size:1em'>调&lt;/text>
+&lt;text text-anchor='middle' x='128' y='4' fill='currentColor' style='font-size:1em'>窗&lt;/text>
+&lt;text text-anchor='middle' x='128' y='36' fill='currentColor' style='font-size:1em'>出&lt;/text>
+&lt;text text-anchor='middle' x='136' y='4' fill='currentColor' style='font-size:1em'>口&lt;/text>
+&lt;text text-anchor='middle' x='136' y='36' fill='currentColor' style='font-size:1em'>命&lt;/text>
+&lt;text text-anchor='middle' x='144' y='36' fill='currentColor' style='font-size:1em'>令&lt;/text>
+&lt;text text-anchor='middle' x='152' y='36' fill='currentColor' style='font-size:1em'>窗&lt;/text>
+&lt;text text-anchor='middle' x='160' y='36' fill='currentColor' style='font-size:1em'>口&lt;/text>
+&lt;/g>
+&lt;/svg>
+&lt;/div>
+&lt;h3 id="命令">命令&lt;/h3>
+&lt;div class="goat svg-container ">
+&lt;svg
+xmlns="http://www.w3.org/2000/svg"
+font-family="Menlo,Lucida Console,monospace"
+viewBox="0 0 136 25"
+>
+&lt;g transform='translate(8,16)'>
+&lt;text text-anchor='middle' x='0' y='4' fill='currentColor' style='font-size:1em'>G&lt;/text>
+&lt;text text-anchor='middle' x='8' y='4' fill='currentColor' style='font-size:1em'>i&lt;/text>
+&lt;text text-anchor='middle' x='16' y='4' fill='currentColor' style='font-size:1em'>t&lt;/text>
+&lt;text text-anchor='middle' x='24' y='4' fill='currentColor' style='font-size:1em'>:&lt;/text>
+&lt;text text-anchor='middle' x='32' y='4' fill='currentColor' style='font-size:1em'>c&lt;/text>
+&lt;text text-anchor='middle' x='40' y='4' fill='currentColor' style='font-size:1em'>l&lt;/text>
+&lt;text text-anchor='middle' x='48' y='4' fill='currentColor' style='font-size:1em'>o&lt;/text>
+&lt;text text-anchor='middle' x='56' y='4' fill='currentColor' style='font-size:1em'>n&lt;/text>
+&lt;text text-anchor='middle' x='64' y='4' fill='currentColor' style='font-size:1em'>e&lt;/text>
+&lt;text text-anchor='middle' x='80' y='4' fill='currentColor' style='font-size:1em'>#&lt;/text>
+&lt;text text-anchor='middle' x='96' y='4' fill='currentColor' style='font-size:1em'>克&lt;/text>
+&lt;text text-anchor='middle' x='104' y='4' fill='currentColor' style='font-size:1em'>隆&lt;/text>
+&lt;text text-anchor='middle' x='112' y='4' fill='currentColor' style='font-size:1em'>项&lt;/text>
+&lt;text text-anchor='middle' x='120' y='4' fill='currentColor' style='font-size:1em'>目&lt;/text>
+&lt;/g>
+&lt;/svg>
+&lt;/div></description></item></channel></rss>
